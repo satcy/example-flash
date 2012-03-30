@@ -1,4 +1,4 @@
-package pf.view.motion
+package prfm.view.motion
 {
 	public class InterpPoint
 	{

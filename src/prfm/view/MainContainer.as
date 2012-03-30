@@ -1,4 +1,4 @@
-package pf.view{
+package prfm.view{
 	import __AS3__.vec.Vector;
 	
 	import flash.display.BlendMode;
@@ -12,8 +12,8 @@ package pf.view{
 	import flash.text.TextField;
 	import flash.utils.getTimer;
 	
-	import pf.view.motion.MotionMan2;
-	import pf.view.motion.TrailLine;
+	import prfm.view.motion.MotionMan2;
+	import prfm.view.motion.TrailLine;
 	
 
 	public class MainContainer extends Sprite {	
@@ -42,7 +42,7 @@ package pf.view{
 		{
 			
 			proj = new PerspectiveProjection();
-			proj.fieldOfView = 60;
+			proj.fieldOfView = 45;
 			
 			motions = [];
 			addMotion("A_test.bvh");
@@ -107,7 +107,7 @@ package pf.view{
 			var cnts:Array = [];
 			var motion:MotionMan2;
 			for each ( motion in motions ) {
-				motion.update(frame_count, 300);
+				motion.update(frame_count, 400);
 			}
 			
 			var m:Matrix3D = proj.toMatrix3D().clone();

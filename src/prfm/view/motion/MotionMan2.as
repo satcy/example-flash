@@ -1,4 +1,4 @@
-package pf.view.motion
+package prfm.view.motion
 {
 	
 	import com.perfume.utils.bvh.*;
@@ -80,7 +80,6 @@ package pf.view.motion
 		public function update(_time:Number, _cam_z:Number):void{
 			if ( !bvh ) return;
 			makePoint();
-			//return;
 			var col:uint;
 			var sp:Sprite;
 			bvh.gotoFrame( (_time)/(bvh.frameTime*1000) ) ;
@@ -112,8 +111,6 @@ package pf.view.motion
 					a.push(_p0.name+"_end", matrix.position.x, (matrix.position.y - 70), matrix.position.z);
 				}
 			}
-			//trace(a);
-			//trace(frame_count);
 			
 			x = a[1];
 			y = a[2];
@@ -127,8 +124,8 @@ package pf.view.motion
 				var _index1:int = a.indexOf(point.b1);
 				var p:Number = point.ratio;
 				point.x = a[_index0+1]*(1-p) + a[_index1+1]*p + offset_x;
-				point.y = -(a[_index0+2]*(1-p) + a[_index1+2]*p + offset_y);
-				point.z = a[_index0+3]*(1-p) + a[_index1+3]*p + _cam_z + offset_z;
+				point.y = -(a[_index0+2]*(1-p) + a[_index1+2]*p) + offset_y;
+				point.z = -(a[_index0+3]*(1-p) + a[_index1+3]*p) + _cam_z + offset_z;
 				var line:TrailLine = lines[i];
 				line.add(point.x, point.y, point.z);
 				line.update();
@@ -137,9 +134,6 @@ package pf.view.motion
 		}
 		
 		
-		private function drawLines(a:Array):void{
-			if ( Math.random() < 0.95 ) return;
-		}
 		
 		private function rePoints():void{
 			for ( var i:int = points.length - 1; i>=0; i-- ) {
